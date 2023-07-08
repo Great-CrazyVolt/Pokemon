@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+
+    <form action="/pokemonQuiz" method="POST">
+
+        <input type="hidden" name="monsterId" value="<%= pokeData[0].monsterId %> ">
+
+        <img src="/img/<%=pokeData[0].imgName %>" alt="<%=pokeData[0].imgName %>">
+        <h5> Name: <%= pokeData[0].name %>  </h5>
+        
+        <label> Which is the correct Element? </label>
+
+        <% for(i=0; i<elements.length; i++) { %>
+
+            <input type="radio" name="pokeElement" value="<%= elements[i].elementId %> " > <%= elements[i].elementName %> 
+        
+        <% } %> 
+        
+            <!-- <input type="radio" name="fire" > fire
+        <input type="radio" name="electric"> electric
+        <input type="radio" name="water"> water
+        <input type="radio" name="grass"> grass
+        <input type="radio" name="normal"> normal -->
+
+        <input type="submit" name="submit" value="Check Answer">
+    </form>
+    
+    <% if(typeof message != "undefined") { %>
+        <h3> <%= message %> </h3>
+    <% } %>
+    
+</body>
+
+
+<%- include("partials/footer.ejs") %>

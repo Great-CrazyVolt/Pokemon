@@ -1,0 +1,57 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    
+    <% for(i=0; i<monsters.length; i++ ) { %>
+        <h5> Name:  <%=monsters[i].name  %>  </h5>
+        <h5> Description: <%=monsters[i].description  %> </h5>
+        <h5> Move Set:  <%=monsters[i].moveSet  %> </h5>
+        <h5> Element: <%=monsters[i].element  %> </h5>
+        <h5> Date Caught: <%=monsters[i].firstCaught  %> </h5>
+        <h5> Score: <%=monsters[i].score  %> </h5>
+
+        <a href="/pokemon/edit?id=<%= monsters[i].monsterId %>  " > Update </a>
+        <br>
+
+    <% } %>  
+
+    <form action="/listPage" method="POST">
+        <label> Name </label>
+        <input type="text" name="name" ><br>
+
+        <label> Description </label>
+        <input type="text" name="description"> <br>
+
+        <label> Element </label>
+        <select name="element">
+            
+            <% for(i=0; i<pokemonElement.length; i++ ) { %> 
+            <option value=<%= pokemonElement[i].elementId %> > <%= pokemonElement[i].elementName %>  </option>
+            <% } %> 
+
+        </select> <br>
+
+        <label> Move Set </label>
+        <input type="text" name="moveSet"> <br>
+
+        <label> Date Caught </label>
+        <input type="date" name="dateCaught"> <br>
+
+        <label> Img Name </label>
+        <input type="text" name="imgName"> <br>
+
+        <label> Score </label>
+        <input type="text" name="score">
+
+        <input type="submit" name="submit" value="Add Pokemon">
+        
+    </form>
+    
+    <% if(typeof message != "undefined") { %>
+        <h3> <%= message %> </h3>
+    <% } %>
+
+</body>
+</html>
+
+<%- include("partials/footer.ejs") %>

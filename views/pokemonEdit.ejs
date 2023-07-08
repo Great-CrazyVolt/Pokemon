@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    
+    <form action="/pokemon/edit" method="POST">
+    
+        <input type="hidden" name="monsterId" value="<%= monsterId %> ">
+        <h4> <%= pokeData[0].name %>  </h4>
+        <img src="/img/<%= pokeData[0].imgName %>" alt="<%= pokeData[0].imgName %>">
+        
+        <br>
+
+        <label> Score </label>
+        <input type="number" name="score"> <br>
+
+        <input type="submit" name="submit" value="Update Score">
+        
+    </form>
+
+    <% if(typeof message != "undefined") { %>
+        <h3> <%= message %> </h3>
+    <% } %>
+</body>
+</html>
+
+<%- include("partials/footer.ejs") %>

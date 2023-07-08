@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    
+    <% for(i=0; i<monsters.length; i++ ) { %> 
+    <div class="m-2 p-5 container border border-dark">
+        <h1 class="mt-2"> Monsters </h1>
+        
+        <h5> <%= monsters[i].name %>  </h5>
+        
+        <img src="/img/<%= monsters[i].imgName %>" id="<%= monsters[i].monsterId %> " />
+
+        <h5> <%= monsters[i].score %>  </h5>
+        <br> <br>
+    </div>
+    <% } %> 
+
+    <div id="authorModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Author Information </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="monsterInfo"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="/js/scripts.js"></script>
+
+<%- include("partials/footer.ejs") %>
